@@ -1,0 +1,57 @@
+{
+  "name": "itcig/docker-wp-boilerplate",
+  "type": "project",
+  "license": "MIT",
+  "description": "Wordpress boilerplate for Docker/K8s deployment",
+  "homepage": "https://github.com/itcig/docker-wp-boilerplate",
+  "authors": [{
+    "name": "Brad Ash",
+    "email": "bradley.ash@gmail.com",
+    "homepage": "https://github.com/unfrgivn"
+  }],
+  "support": {
+    "issues": "https://github.com/itcig/docker-wp-boilerplate/issues"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "repositories": {
+    "wpackagist": {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "composer/installers": "^1.0",
+    "ext-curl": "*",
+    "johnpbloch/wordpress": "^5.0",
+    "oscarotero/env": "^1.1.0",
+    "roots/wp-config": "1.0.0",
+    "roots/wp-password-bcrypt": "1.0.0",
+    "vlucas/phpdotenv": "^4.1"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.0.2",
+    "roave/security-advisories": "dev-master"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "web/app/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/app/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "web/wp"
+  },
+  "scripts": {
+    "test": [
+      "phpcs"
+    ]
+  }
+}

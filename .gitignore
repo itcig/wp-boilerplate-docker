@@ -1,0 +1,42 @@
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# PhpStorm
+.idea
+.idea/*
+
+# Vagrant
+bin
+.vagrant
+
+#OS X
+.DS_Store
+
+# Vendor
+vendor
+vendor/*
+!vendor/.gitkeep
+
+# NPM
+node_modules
+
+# Application
+app/web/app/plugins/*
+!app/web/app/plugins/.gitkeep
+app/web/app/mu-plugins/*/
+app/web/app/upgrade
+app/web/app/uploads/*
+!app/web/app/uploads/.gitkeep
+app/web/app/cache/
+
+# Plugins not on wpackagist
+# !web/app/plugins/<plugin-dir>/
+
+# WordPress
+app/web/wp
+
+# WP-CLI
+db-sync
+sql-dump-*.sql

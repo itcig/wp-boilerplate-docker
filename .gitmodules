@@ -1,0 +1,3 @@
+[submodule "web/app/plugins/WP-Plugin-Directories"]
+	path = web/app/plugins/WP-Plugin-Directories
+	url = https://github.com/chrisguitarguy/WP-Plugin-Directories.git

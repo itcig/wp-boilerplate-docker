@@ -1,0 +1,46 @@
+version: "3"
+services:
+  web:
+    image: unfrgivn/nginx-php-fpm
+    restart: unless-stopped
+    ports:
+      - "${LOCAL_PORT_WEB}:80"
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      DB_HOST: mysql
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PREFIX: ${DB_PREFIX}
+      WP_ENV: ${WP_ENV}
+      WP_HOME: ${WP_HOME}
+      WP_SITEURL: ${WP_HOME}/wp
+      AUTH_KEY: ${AUTH_KEY}
+      SECURE_AUTH_KEY: ${SECURE_AUTH_KEY}
+      LOGGED_IN_KEY: ${LOGGED_IN_KEY}
+      NONCE_KEY: ${NONCE_KEY}
+      AUTH_SALT: ${AUTH_SALT}
+      SECURE_AUTH_SALT: ${SECURE_AUTH_SALT}
+      LOGGED_IN_SALT: ${LOGGED_IN_SALT}
+      NONCE_SALT: ${NONCE_SALT}
+
+  mysql:
+    image: mysql:8.0.20
+    restart: unless-stopped
+    ports:
+      - "${LOCAL_PORT_DB}:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+      # If you need to override the default MySQL config you can map it here
+      # - ./mysql/my.cnf:/etc/mysql/conf.d/zz_my.cnf:ro #zz_ so cnf file is loaded last
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      TZ: America/New_York
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  mysql:
+    driver: "local"
