@@ -8,6 +8,8 @@ services:
     volumes:
       - ./app:/var/www/html
     environment:
+      WEBROOT: /var/www/html/web
+      ENABLE_XDEBUG: "1"
       DB_HOST: mysql
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
@@ -37,9 +39,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       TZ: America/New_York
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
 
 volumes:
   mysql:
