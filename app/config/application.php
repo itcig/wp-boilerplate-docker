@@ -97,7 +97,6 @@ Config::define('DISALLOW_FILE_MODS', true);
 
 Config::define('WP_POST_REVISIONS', false);
 Config::define('WP_MEMORY_LIMIT', env('WP_MEMORY_LIMIT') ?: '128M');
-Config::define('WP_DEBUG_NO_WARNINGS', true);
 
 /**
  * Cookies
@@ -116,9 +115,9 @@ Config::define('WP_CACHE', true);
 /**
  * Debugging Settings
  */
-Config::define('WP_DEBUG_DISPLAY', false);
-Config::define('SCRIPT_DEBUG', false);
-ini_set('display_errors', 0);
+Config::define('WP_DEBUG', env('WP_DEBUG'));
+Config::define('WP_DEBUG_NO_WARNINGS', env('WP_DEBUG_NO_WARNINGS'));
+Config::define('WP_DISABLE_FATAL_ERROR_HANDLER', env('WP_DEBUG_NO_WARNINGS'));
 
 /**
  * Allow WordPress to detect HTTPS when used behind a reverse proxy or a load balancer
