@@ -8,11 +8,13 @@ services:
     volumes:
       - ./app:/var/www/html
       - ./nginx/extras/rewrites.conf:/etc/nginx/extras-enabled/rewrites.conf
+      - ./nginx/extras/security.conf:/etc/nginx/extras-enabled/security.conf
       - ./nginx/errors/error-handler.php:/var/www/errors/error-handler.php
     environment:
       WEBROOT: /var/www/html/web
       ENABLE_XDEBUG: ${ENABLE_XDEBUG}
       PHP_ERRORS_STDERR: ${PHP_ERRORS_STDERR}
+      NGINX_ERRORS: ${NGINX_ERRORS}
       DB_HOST: mysql
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
