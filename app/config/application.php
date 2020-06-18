@@ -8,13 +8,27 @@
  * can.
  */
 
+
 use Roots\WPConfig\Config;
 
-/** @var string Directory containing all of the site's files */
-$root_dir = dirname(__DIR__);
+/**
+* @var string Directory containing all of the site's files. Set the `levels` equal to how many directories above this file the .env exists
+*/
+$root_dir = dirname(__DIR__, 2);
 
-/** @var string Document Root */
-$webroot_dir = "{$root_dir}/web";
+/**
+* @var string Application Root which is always 1 level up regardless of the root.
+*/
+$app_root = dirname(__DIR__);
+
+/**
+* @var string Document Root
+*/
+$webroot_dir = $app_root . '/web';
+
+// Define global constants for directories
+define('APP_ROOT', $app_root);
+define('WEB_ROOT', $webroot_dir);
 
 /**
  * Expose global env() function from oscarotero/env
